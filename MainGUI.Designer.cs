@@ -69,6 +69,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Visible = true; // Ensure menu strip is visible
 
             // File Menu
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -81,6 +82,29 @@
                 this.exitToolStripMenuItem
             });
             this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Visible = true; // Ensure menu item is visible
+
+            // Each File Menu Item
+            this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Visible = true;
+
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Visible = true;
+
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Visible = true;
+
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Visible = true;
+
+            this.saveAsToolStripMenuItem.Text = "Save As";
+            this.saveAsToolStripMenuItem.Visible = true;
+
+            this.printToolStripMenuItem.Text = "Print";
+            this.printToolStripMenuItem.Visible = true;
+
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Visible = true;
 
             // Edit Menu
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -93,6 +117,29 @@
                 this.replaceToolStripMenuItem
             });
             this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Visible = true;// Ensure menu item is visible
+
+            // Each Edit Menu Item
+            this.undoToolStripMenuItem.Text = "Undo";
+            this.newToolStripMenuItem.Visible = true;
+
+            this.redoToolStripMenuItem.Text = "Redo";
+            this.newToolStripMenuItem.Visible = true;
+
+            this.cutToolStripMenuItem.Text = "Cut";
+            this.newToolStripMenuItem.Visible = true;
+
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.newToolStripMenuItem.Visible = true;
+
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.newToolStripMenuItem.Visible = true;
+
+            this.findToolStripMenuItem.Text = "Find";
+            this.newToolStripMenuItem.Visible = true;
+            
+            this.replaceToolStripMenuItem.Text = "Replace";
+            this.newToolStripMenuItem.Visible = true;
 
             // View Menu
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -102,6 +149,20 @@
                 this.fullScreenToolStripMenuItem
             });
             this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Visible = true;// Ensure menu item is visible
+
+            // Each Edit Menu Item
+            this.zoomInToolStripMenuItem.Text = "Zoom In";
+            this.viewToolStripMenuItem.Visible = true;
+            
+            this.zoomOutToolStripMenuItem.Text = "Zoom Out";
+            this.viewToolStripMenuItem.Visible = true;
+
+            this.resetZoomToolStripMenuItem.Text = "Reset Zoom";
+            this.viewToolStripMenuItem.Visible = true;
+
+            this.fullScreenToolStripMenuItem.Text = "Full Screen";
+            this.viewToolStripMenuItem.Visible = true;
 
             // Help Menu
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -109,6 +170,15 @@
                 this.documentationToolStripMenuItem
             });
             this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Visible = true;// Ensure menu item is visible
+
+            // Each Edit Menu Item
+            this.aboutToolStripMenuItem.Text = "About";
+            this.documentationToolStripMenuItem.Visible = true;
+
+            this.documentationToolStripMenuItem.Text = "Documentation";
+            this.aboutToolStripMenuItem.Visible = true;
+
 
             // MainGUI
             this.Controls.Add(this.menuStrip1);
