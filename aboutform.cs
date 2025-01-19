@@ -7,6 +7,14 @@ namespace TimelineBuilderPro
 	{
 		private readonly string lastUpdateDate; // Store the last update date
 
+		private Label labelAppName = null!;
+		private Label labelCreator = null!;
+		private Label labelCopyright = null!;
+		private Label labelVersion = null!;
+		private Label labelCurrentDate = null!;
+		private Label labelLastUpdate = null!;
+		private Button buttonClose = null!;
+
 		public AboutForm()
 		{
 			lastUpdateDate = "January 15, 2025"; // Example date, replace with dynamic logic as needed
@@ -22,7 +30,7 @@ namespace TimelineBuilderPro
 			this.labelCopyright = new System.Windows.Forms.Label();
 			this.labelVersion = new System.Windows.Forms.Label();
 			this.labelCurrentDate = new System.Windows.Forms.Label();
-			this.labelLastUpdate = new System.Windows.Forms.Label(); // New label for Last Update
+			this.labelLastUpdate = new System.Windows.Forms.Label();
 			this.buttonClose = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 
@@ -112,12 +120,12 @@ namespace TimelineBuilderPro
 			this.PerformLayout();
 		}
 
-		private void AboutForm_Load(object? sender, EventArgs e)
+		private void AboutForm_Load(object? sender, EventArgs e) // Updated to allow nullable sender
 		{
 			CenterCloseButton();
 		}
 
-		private void ButtonClose_Click(object sender, EventArgs e)
+		private void ButtonClose_Click(object? sender, EventArgs e) // Updated to allow nullable sender
 		{
 			this.Close();
 		}
@@ -138,13 +146,5 @@ namespace TimelineBuilderPro
 			int buttonVerticalPosition = formHeight - buttonClose.Height - 30; // 30px padding from the bottom
 			buttonClose.Location = new System.Drawing.Point((formWidth - buttonClose.Width) / 2, buttonVerticalPosition);
 		}
-
-		private System.Windows.Forms.Label labelAppName;
-		private System.Windows.Forms.Label labelCreator;
-		private System.Windows.Forms.Label labelCopyright;
-		private System.Windows.Forms.Label labelVersion;
-		private System.Windows.Forms.Label labelCurrentDate;
-		private System.Windows.Forms.Label labelLastUpdate; // New label
-		private System.Windows.Forms.Button buttonClose;
 	}
 }
