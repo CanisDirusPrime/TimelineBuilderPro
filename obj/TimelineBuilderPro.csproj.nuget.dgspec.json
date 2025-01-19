@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderPro\\TimelineBuilderPro.csproj": {}
+    "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineBuilderPro.csproj": {}
   },
   "projects": {
-    "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderPro\\TimelineBuilderPro.csproj": {
+    "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineBuilderPro.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderPro\\TimelineBuilderPro.csproj",
+        "projectUniqueName": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineBuilderPro.csproj",
         "projectName": "TimelineBuilderPro",
-        "projectPath": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderPro\\TimelineBuilderPro.csproj",
+        "projectPath": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineBuilderPro.csproj",
         "packagesPath": "C:\\Users\\Bryan\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderPro\\obj\\",
+        "outputPath": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
