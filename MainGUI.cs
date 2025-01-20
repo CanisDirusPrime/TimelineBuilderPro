@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using TimelineBuilderPro;
 
 namespace TimelineBuilderPro
 {
@@ -8,10 +9,14 @@ namespace TimelineBuilderPro
     {
         private bool isUnsavedChanges = false; // Tracks whether there are unsaved changes
         private const string DefaultFileExtension = ".timeline"; // Default file extension
+        private System.Windows.Forms.Timer autoSaveTimer; // Declare the Timer
 
         public MainGUI()
         {
             InitializeComponent();
+
+            // Apply user preferences
+            ApplyPreferences();
 
             // Check and display the monitor resolution
             ErrorHandler.CheckMonitorResolution();
@@ -19,12 +24,17 @@ namespace TimelineBuilderPro
             // Set the form to launch maximized
             this.WindowState = FormWindowState.Maximized;
 
+            // Initialize the Timer
+            autoSaveTimer = new System.Windows.Forms.Timer();
+            autoSaveTimer.Tick += AutoSaveTimer_Tick;
+
             // Attach event handlers for File menu items
             this.newToolStripMenuItem.Click += NewToolStripMenuItem_Click;
             this.openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
             this.saveToolStripMenuItem.Click += SaveToolStripMenuItem_Click;
             this.saveAsToolStripMenuItem.Click += SaveAsToolStripMenuItem_Click;
             this.closeToolStripMenuItem.Click += CloseToolStripMenuItem_Click;
+            this.preferencesToolStripMenuItem.Click += PreferencesToolStripMenuItem_Click;
             this.exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
 
             // Attach event handlers for Edit menu items
@@ -58,7 +68,96 @@ namespace TimelineBuilderPro
             // TODO: Add initialization code here
         }
 
-        private void NewToolStripMenuItem_Click(object? sender, EventArgs e)
+        public void ApplyPreferences()
+        {
+            // Apply theme
+            if (Program.UserPreferences.Theme == "Dark")
+            {
+                this.BackColor = System.Drawing.Color.DarkGray;
+                // Apply other dark theme settings
+            }
+            else
+            {
+                this.BackColor = System.Drawing.Color.White;
+                // Apply other light theme settings
+            }
+
+            // Apply font size
+            this.Font = new System.Drawing.Font(this.Font.FontFamily, Program.UserPreferences.FontSize);
+
+            // Apply language (this is a placeholder, actual implementation may vary)
+            ApplyLanguage(Program.UserPreferences.Language);
+
+            /*
+            // Apply notifications
+            if (Program.UserPreferences.EnableNotifications)
+            {
+                // Enable notifications
+            }
+            else
+            {
+                // Disable notifications
+            }
+            */
+
+            // Apply auto-save interval
+            int intervalMinutes = Program.UserPreferences.AutoSaveInterval;
+            autoSaveTimer.Interval = intervalMinutes * 60 * 1000; // Convert minutes to milliseconds
+            autoSaveTimer.Start();
+
+            // Apply other preferences as needed
+        }
+
+        private void ApplyLanguage(string language)
+        {
+            try
+            {
+                // Placeholder for applying language settings
+                // Actual implementation may involve loading language resources, etc.
+                if (language == "English")
+                {
+                    // Apply English language settings
+                }
+                else if (language == "Spanish")
+                {
+                    // Apply Spanish language settings
+                }
+                else if (language == "French")
+                {
+                    // Apply French language settings
+                }
+                else if (language == "German")
+                {
+                    // Apply German language settings
+                }
+                else
+                {
+                    throw new NotSupportedException($"Language '{language}' is not supported.");
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Applying language settings");
+            }
+        }
+
+        private void PreferencesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var preferencesForm = new PreferencesForm())
+                {
+                    preferencesForm.ShowDialog(this);
+                    ApplyPreferences(); // Re-apply preferences after closing the form
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Opening preferences dialog");
+            }
+        }
+
+        private void NewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -88,7 +187,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void OpenToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -121,7 +220,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void SaveToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -133,7 +232,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void SaveAsToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -153,7 +252,20 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void CloseToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void AutoSaveTimer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                // Save the current file
+                SaveCurrentFile();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Auto-saving preferences");
+            }
+        }
+
+        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -178,7 +290,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void ExitToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -203,7 +315,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void UndoToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void UndoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -215,7 +327,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void RedoToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void RedoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -227,7 +339,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void CutToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -239,7 +351,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void CopyToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -251,7 +363,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void PasteToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -263,7 +375,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void FindToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void FindToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -275,7 +387,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void ReplaceToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void ReplaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -287,7 +399,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void ZoomInToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void ZoomInToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -299,7 +411,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void ZoomOutToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void ZoomOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -311,7 +423,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void ResetZoomToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void ResetZoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -323,7 +435,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void ShowGridLinesToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void ShowGridLinesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -335,7 +447,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void ToggleSidebarToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void ToggleSidebarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -347,7 +459,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void FullScreenToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void FullScreenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -359,7 +471,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void DocumentationToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void DocumentationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -371,7 +483,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void AboutToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {

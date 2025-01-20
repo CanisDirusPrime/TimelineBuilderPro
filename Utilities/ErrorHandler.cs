@@ -18,6 +18,15 @@ namespace TimelineBuilderPro
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public static void HandlePreferenceLoadException(Exception ex)
+        {
+            // Log the exception
+            LogException(ex, "Loading preferences");
+
+            // Display a user-friendly message
+            MessageBox.Show("Failed to load preferences. Default settings will be used.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
         public static DialogResult ShowUnsavedChangesDialog()
         {
             return MessageBox.Show("You have unsaved changes. Do you want to save before proceeding?", "Unsaved Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
@@ -32,13 +41,13 @@ namespace TimelineBuilderPro
 
                 if (resolution != null)
                 {
-                    // Display the resolution in a message box
-                    MessageBox.Show($"Primary Monitor Resolution: {resolution}", "Monitor Resolution");
+                    // Store the resolution in the Preferences class
+                    Preferences.MonitorResolution = resolution;
                 }
                 else
                 {
                     // Handle the case where there is no primary screen
-                    MessageBox.Show("No primary monitor detected.", "Monitor Resolution");
+                    Preferences.MonitorResolution = "No primary monitor detected.";
                 }
             }
             catch (Exception ex)
@@ -59,13 +68,21 @@ namespace TimelineBuilderPro
                 string currentDate = DateTime.Now.ToString("dd-MMM-yyyy");
                 string currentTime = DateTime.Now.ToString("HH:mm:ss");
 
+                // Ensure the directory exists
+                var logDirectory = Path.GetDirectoryName(logFilePath);
+                if (!Directory.Exists(logDirectory))
+                {
+                    Directory.CreateDirectory(logDirectory);
+                }
+
                 // Ensure the log file exists
                 if (!File.Exists(logFilePath))
                 {
                     using (File.Create(logFilePath)) { }
                 }
 
-                using (StreamWriter writer = new StreamWriter(logFilePath, true))
+                using (var fileStream = new FileStream(logFilePath, FileMode.Append, FileAccess.Write, FileShare.Read))
+                using (var writer = new StreamWriter(fileStream))
                 {
                     // Check if the last log entry date is different from the current date
                     string lastLogDate = File.ReadLines(logFilePath).LastOrDefault(line => line.StartsWith("Date:"))?.Substring(6) ?? string.Empty;
@@ -83,9 +100,10 @@ namespace TimelineBuilderPro
                     writer.WriteLine();
                 }
             }
-            catch
+            catch (Exception logEx)
             {
-                // Ignore logging errors
+                // Handle logging errors
+                MessageBox.Show($"Failed to log error: {logEx.Message}", "Logging Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
