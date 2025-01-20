@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TimelineBuilderPro")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf07eb64c3d479c007600159274602c41e4e6a6b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2583869b09bc2c8bbcac76fb0d5ac00bbbc9db5")]
 [assembly: System.Reflection.AssemblyProductAttribute("TimelineBuilderPro")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TimelineBuilderPro")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

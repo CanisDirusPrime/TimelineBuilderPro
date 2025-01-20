@@ -7,8 +7,17 @@
     <Compile Update="MainGUI.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TimelineCanvas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="TimelineDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TimelineEditor.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TimelineEditorMenu.cs">
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
 </Project>

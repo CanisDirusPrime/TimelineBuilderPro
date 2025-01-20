@@ -15,10 +15,10 @@ namespace TimelineBuilderPro
             // Comment and/or Uncomment one of the following lines to run the desired application:
 
             // Run the main GUI application
-            //Application.Run(new MainGUI());
+            Application.Run(new MainGUI());
 
             // Run the Timeline Editor for testing or development
-             Application.Run(new TimelineEditor());
+            // Application.Run(new TimelineEditor());
         }
     }
 }
