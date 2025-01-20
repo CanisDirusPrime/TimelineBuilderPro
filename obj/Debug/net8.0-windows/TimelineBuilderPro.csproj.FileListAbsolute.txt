@@ -14,6 +14,11 @@ D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderPro\obj\Debug\net8.0-w
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderPro\obj\Debug\net8.0-windows\TimelineBuilderPro.pdb
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderPro\obj\Debug\net8.0-windows\TimelineBuilderPro.genruntimeconfig.cache
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderPro\obj\Debug\net8.0-windows\ref\TimelineBuilderPro.dll
+D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\bin\Debug\net8.0-windows\TimelineBuilderPro.exe
+D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\bin\Debug\net8.0-windows\TimelineBuilderPro.deps.json
+D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\bin\Debug\net8.0-windows\TimelineBuilderPro.runtimeconfig.json
+D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\bin\Debug\net8.0-windows\TimelineBuilderPro.dll
+D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\bin\Debug\net8.0-windows\TimelineBuilderPro.pdb
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.MainGUI.resources
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.csproj.GenerateResource.cache
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.GeneratedMSBuildEditorConfig.editorconfig
@@ -21,11 +26,6 @@ D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.AssemblyInfo.cs
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.csproj.CoreCompileInputs.cache
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.sourcelink.json
-D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\bin\Debug\net8.0-windows\TimelineBuilderPro.exe
-D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\bin\Debug\net8.0-windows\TimelineBuilderPro.deps.json
-D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\bin\Debug\net8.0-windows\TimelineBuilderPro.runtimeconfig.json
-D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\bin\Debug\net8.0-windows\TimelineBuilderPro.dll
-D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\bin\Debug\net8.0-windows\TimelineBuilderPro.pdb
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.dll
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\refint\TimelineBuilderPro.dll
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.pdb
