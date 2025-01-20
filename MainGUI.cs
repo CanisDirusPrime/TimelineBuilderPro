@@ -14,7 +14,7 @@ namespace TimelineBuilderPro
             InitializeComponent();
 
             // Check and display the monitor resolution
-            CheckMonitorResolution();
+            ErrorHandler.CheckMonitorResolution();
 
             // Set the form to launch maximized
             this.WindowState = FormWindowState.Maximized;
@@ -28,13 +28,13 @@ namespace TimelineBuilderPro
             this.exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
 
             // Attach event handlers for Edit menu items
-            this.undoToolStripMenuItem.Click += (s, e) => MessageBox.Show("Undo action performed!");
-            this.redoToolStripMenuItem.Click += (s, e) => MessageBox.Show("Redo action performed!");
-            this.cutToolStripMenuItem.Click += (s, e) => MessageBox.Show("Cut action performed!");
-            this.copyToolStripMenuItem.Click += (s, e) => MessageBox.Show("Copy action performed!");
-            this.pasteToolStripMenuItem.Click += (s, e) => MessageBox.Show("Paste action performed!");
-            this.findToolStripMenuItem.Click += (s, e) => MessageBox.Show("Find action performed!");
-            this.replaceToolStripMenuItem.Click += (s, e) => MessageBox.Show("Replace action performed!");
+            this.undoToolStripMenuItem.Click += UndoToolStripMenuItem_Click;
+            this.redoToolStripMenuItem.Click += RedoToolStripMenuItem_Click;
+            this.cutToolStripMenuItem.Click += CutToolStripMenuItem_Click;
+            this.copyToolStripMenuItem.Click += CopyToolStripMenuItem_Click;
+            this.pasteToolStripMenuItem.Click += PasteToolStripMenuItem_Click;
+            this.findToolStripMenuItem.Click += FindToolStripMenuItem_Click;
+            this.replaceToolStripMenuItem.Click += ReplaceToolStripMenuItem_Click;
 
             // Attach event handlers for View menu items
             this.zoomInToolStripMenuItem.Click += ZoomInToolStripMenuItem_Click;
@@ -52,24 +52,6 @@ namespace TimelineBuilderPro
             InitializeTimelineEditor();
         }
 
-        private void CheckMonitorResolution()
-        {
-            // Get the resolution of the primary monitor
-            var resolution = Screen.PrimaryScreen?.Bounds.Width + " x " + Screen.PrimaryScreen?.Bounds.Height;
-
-            if (resolution != null)
-            {
-                // Display the resolution in a message box
-                MessageBox.Show($"Primary Monitor Resolution: {resolution}", "Monitor Resolution");
-            }
-            else
-            {
-                // Handle the case where there is no primary screen
-                MessageBox.Show("No primary monitor detected.", "Monitor Resolution");
-            }
-        }
-
-
         private void InitializeTimelineEditor()
         {
             // Initialize the timeline editor components
@@ -78,153 +60,330 @@ namespace TimelineBuilderPro
 
         private void NewToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            if (isUnsavedChanges)
+            try
             {
-                var result = MessageBox.Show("You have unsaved changes. Do you want to save before creating a new timeline?", "Unsaved Changes", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
+                if (isUnsavedChanges)
                 {
-                    SaveToolStripMenuItem_Click(sender, e);
+                    var result = ErrorHandler.ShowUnsavedChangesDialog();
+                    if (result == DialogResult.Yes)
+                    {
+                        SaveToolStripMenuItem_Click(sender, e);
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+                        return;
+                    }
                 }
-                else if (result == DialogResult.Cancel)
-                {
-                    return;
-                }
-            }
 
-            var newTimelineDialog = new NewTimelineDialog();
-            if (newTimelineDialog.ShowDialog() == DialogResult.OK)
-            {
-                CreateNewTimeline(newTimelineDialog.TimelineSettings);
+                var newTimelineDialog = new NewTimelineDialog();
+                if (newTimelineDialog.ShowDialog() == DialogResult.OK)
+                {
+                    CreateNewTimeline(newTimelineDialog.TimelineSettings);
+                }
+                isUnsavedChanges = false;
             }
-            isUnsavedChanges = false;
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Creating a new timeline");
+            }
         }
 
         private void OpenToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            if (isUnsavedChanges)
+            try
             {
-                var result = MessageBox.Show("You have unsaved changes. Do you want to save before opening a new file?", "Unsaved Changes", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
+                if (isUnsavedChanges)
                 {
-                    SaveToolStripMenuItem_Click(sender, e);
+                    var result = ErrorHandler.ShowUnsavedChangesDialog();
+                    if (result == DialogResult.Yes)
+                    {
+                        SaveToolStripMenuItem_Click(sender, e);
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+                        return;
+                    }
                 }
-                else if (result == DialogResult.Cancel)
+
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
-                    return;
+                    openFileDialog.Filter = $"Timeline Files (*{DefaultFileExtension})|*{DefaultFileExtension}|All Files (*.*)|*.*";
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // TODO: Add code to load the timeline from the file
+                        isUnsavedChanges = false;
+                    }
                 }
             }
-
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            catch (Exception ex)
             {
-                openFileDialog.Filter = $"Timeline Files (*{DefaultFileExtension})|*{DefaultFileExtension}|All Files (*.*)|*.*";
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    // TODO: Add code to load the timeline from the file
-                    isUnsavedChanges = false;
-                }
+                ErrorHandler.HandleException(ex, "Opening a timeline file");
             }
         }
 
         private void SaveToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            SaveCurrentFile();
+            try
+            {
+                SaveCurrentFile();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Saving the current file");
+            }
         }
 
         private void SaveAsToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            try
             {
-                saveFileDialog.Filter = $"Timeline Files (*{DefaultFileExtension})|*{DefaultFileExtension}|All Files (*.*)|*.*";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    // TODO: Add code to save the timeline to the file
-                    isUnsavedChanges = false;
+                    saveFileDialog.Filter = $"Timeline Files (*{DefaultFileExtension})|*{DefaultFileExtension}|All Files (*.*)|*.*";
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // TODO: Add code to save the timeline to the file
+                        isUnsavedChanges = false;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Saving the file as a new file");
             }
         }
 
         private void CloseToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            if (isUnsavedChanges)
+            try
             {
-                var result = MessageBox.Show("You have unsaved changes. Do you want to save before closing?", "Unsaved Changes", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
+                if (isUnsavedChanges)
                 {
-                    SaveToolStripMenuItem_Click(sender, e);
+                    var result = ErrorHandler.ShowUnsavedChangesDialog();
+                    if (result == DialogResult.Yes)
+                    {
+                        SaveToolStripMenuItem_Click(sender, e);
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+                        return;
+                    }
                 }
-                else if (result == DialogResult.Cancel)
-                {
-                    return;
-                }
-            }
 
-            // TODO: Add logic to close the timeline and clear the editor
+                // TODO: Add logic to close the timeline and clear the editor
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Closing the timeline");
+            }
         }
 
-        private void FindReplaceToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            // TODO: Implement Find and Replace logic
+            try
+            {
+                if (isUnsavedChanges)
+                {
+                    var result = ErrorHandler.ShowUnsavedChangesDialog();
+                    if (result == DialogResult.Yes)
+                    {
+                        SaveToolStripMenuItem_Click(sender, e);
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+                        return;
+                    }
+                }
+
+                Application.Exit();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Exiting the application");
+            }
+        }
+
+        private void UndoToolStripMenuItem_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Performing undo action");
+            }
+        }
+
+        private void RedoToolStripMenuItem_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Performing redo action");
+            }
+        }
+
+        private void CutToolStripMenuItem_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Performing cut action");
+            }
+        }
+
+        private void CopyToolStripMenuItem_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Performing copy action");
+            }
+        }
+
+        private void PasteToolStripMenuItem_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Performing paste action");
+            }
+        }
+
+        private void FindToolStripMenuItem_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Performing find action");
+            }
+        }
+
+        private void ReplaceToolStripMenuItem_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Performing replace action");
+            }
         }
 
         private void ZoomInToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            // TODO: Implement Zoom In functionality
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Zooming in");
+            }
         }
 
         private void ZoomOutToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            // TODO: Implement Zoom Out functionality
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Zooming out");
+            }
         }
 
         private void ResetZoomToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            // TODO: Implement Reset Zoom functionality
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Resetting zoom");
+            }
         }
 
         private void ShowGridLinesToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            // TODO: Implement Show/Hide Grid Lines functionality
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Toggling grid lines");
+            }
         }
 
         private void ToggleSidebarToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            // TODO: Implement Toggle Sidebar functionality
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Toggling sidebar");
+            }
         }
 
         private void FullScreenToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            // TODO: Implement Full Screen functionality
-        }
-
-        private void AboutToolStripMenuItem_Click(object? sender, EventArgs e)
-        {
-            using (var aboutForm = new AboutForm())
+            try
             {
-                aboutForm.ShowDialog(this);
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Entering full screen mode");
             }
         }
 
         private void DocumentationToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            // TODO: Implement Documentation logic (open a help file or website)
+            try
+            {
+                ErrorHandler.ShowNotImplementedMessage();
+            }
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Opening documentation");
+            }
         }
 
-        private void ExitToolStripMenuItem_Click(object? sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object? sender, EventArgs e)
         {
-            if (isUnsavedChanges)
+            try
             {
-                var result = MessageBox.Show("You have unsaved changes. Do you want to save before exiting?", "Unsaved Changes", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
+                using (var aboutForm = new AboutForm())
                 {
-                    SaveToolStripMenuItem_Click(sender, e);
-                }
-                else if (result == DialogResult.Cancel)
-                {
-                    return;
+                    aboutForm.ShowDialog(this);
                 }
             }
-
-            Application.Exit();
+            catch (Exception ex)
+            {
+                ErrorHandler.HandleException(ex, "Opening about dialog");
+            }
         }
 
         private void SaveCurrentFile()
