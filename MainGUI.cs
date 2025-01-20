@@ -13,6 +13,11 @@ namespace TimelineBuilderPro
         {
             InitializeComponent();
 
+            // Set the form to full-screen mode
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            this.TopMost = true;
+
             // Attach event handlers for File menu items
             this.newToolStripMenuItem.Click += NewToolStripMenuItem_Click;
             this.openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
@@ -22,12 +27,13 @@ namespace TimelineBuilderPro
             this.exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
 
             // Attach event handlers for Edit menu items
-            this.undoToolStripMenuItem.Click += UndoToolStripMenuItem_Click;
-            this.redoToolStripMenuItem.Click += RedoToolStripMenuItem_Click;
-            this.cutToolStripMenuItem.Click += CutToolStripMenuItem_Click;
-            this.copyToolStripMenuItem.Click += CopyToolStripMenuItem_Click;
-            this.pasteToolStripMenuItem.Click += PasteToolStripMenuItem_Click;
-            this.findReplaceToolStripMenuItem.Click += FindReplaceToolStripMenuItem_Click;
+            this.undoToolStripMenuItem.Click += (s, e) => MessageBox.Show("Undo action performed!");
+            this.redoToolStripMenuItem.Click += (s, e) => MessageBox.Show("Redo action performed!");
+            this.cutToolStripMenuItem.Click += (s, e) => MessageBox.Show("Cut action performed!");
+            this.copyToolStripMenuItem.Click += (s, e) => MessageBox.Show("Copy action performed!");
+            this.pasteToolStripMenuItem.Click += (s, e) => MessageBox.Show("Paste action performed!");
+            this.findToolStripMenuItem.Click += (s, e) => MessageBox.Show("Find action performed!");
+            this.replaceToolStripMenuItem.Click += (s, e) => MessageBox.Show("Replace action performed!");
 
             // Attach event handlers for View menu items
             this.zoomInToolStripMenuItem.Click += ZoomInToolStripMenuItem_Click;
