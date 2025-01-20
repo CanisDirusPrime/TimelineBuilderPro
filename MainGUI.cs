@@ -13,10 +13,11 @@ namespace TimelineBuilderPro
         {
             InitializeComponent();
 
-            // Set the form to full-screen mode
-            this.FormBorderStyle = FormBorderStyle.None;
+            // Check and display the monitor resolution
+            CheckMonitorResolution();
+
+            // Set the form to launch maximized
             this.WindowState = FormWindowState.Maximized;
-            this.TopMost = true;
 
             // Attach event handlers for File menu items
             this.newToolStripMenuItem.Click += NewToolStripMenuItem_Click;
@@ -49,6 +50,16 @@ namespace TimelineBuilderPro
 
             // Initialize the timeline editor
             InitializeTimelineEditor();
+        }
+
+        private void CheckMonitorResolution()
+        {
+            // Get the resolution of the primary monitor
+            var primaryScreen = Screen.PrimaryScreen;
+            var resolution = $"{primaryScreen.Bounds.Width} x {primaryScreen.Bounds.Height}";
+
+            // Display the resolution in a message box
+            MessageBox.Show($"Primary Monitor Resolution: {resolution}", "Monitor Resolution");
         }
 
         private void InitializeTimelineEditor()

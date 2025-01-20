@@ -183,9 +183,9 @@
             // MainGUI
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "MainGUI";
             this.Text = "Timeline Builder Pro";
+
         }
     }
 }
