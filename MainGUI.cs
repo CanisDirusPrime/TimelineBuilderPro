@@ -55,12 +55,20 @@ namespace TimelineBuilderPro
         private void CheckMonitorResolution()
         {
             // Get the resolution of the primary monitor
-            var primaryScreen = Screen.PrimaryScreen;
-            var resolution = $"{primaryScreen.Bounds.Width} x {primaryScreen.Bounds.Height}";
+            var resolution = Screen.PrimaryScreen?.Bounds.Width + " x " + Screen.PrimaryScreen?.Bounds.Height;
 
-            // Display the resolution in a message box
-            MessageBox.Show($"Primary Monitor Resolution: {resolution}", "Monitor Resolution");
+            if (resolution != null)
+            {
+                // Display the resolution in a message box
+                MessageBox.Show($"Primary Monitor Resolution: {resolution}", "Monitor Resolution");
+            }
+            else
+            {
+                // Handle the case where there is no primary screen
+                MessageBox.Show("No primary monitor detected.", "Monitor Resolution");
+            }
         }
+
 
         private void InitializeTimelineEditor()
         {
@@ -68,7 +76,7 @@ namespace TimelineBuilderPro
             // TODO: Add initialization code here
         }
 
-        private void NewToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NewToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             if (isUnsavedChanges)
             {
@@ -91,7 +99,7 @@ namespace TimelineBuilderPro
             isUnsavedChanges = false;
         }
 
-        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             if (isUnsavedChanges)
             {
@@ -117,12 +125,12 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             SaveCurrentFile();
         }
 
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveAsToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
@@ -135,7 +143,7 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CloseToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             if (isUnsavedChanges)
             {
@@ -153,42 +161,42 @@ namespace TimelineBuilderPro
             // TODO: Add logic to close the timeline and clear the editor
         }
 
-        private void FindReplaceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FindReplaceToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             // TODO: Implement Find and Replace logic
         }
 
-        private void ZoomInToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ZoomInToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             // TODO: Implement Zoom In functionality
         }
 
-        private void ZoomOutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ZoomOutToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             // TODO: Implement Zoom Out functionality
         }
 
-        private void ResetZoomToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ResetZoomToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             // TODO: Implement Reset Zoom functionality
         }
 
-        private void ShowGridLinesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ShowGridLinesToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             // TODO: Implement Show/Hide Grid Lines functionality
         }
 
-        private void ToggleSidebarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToggleSidebarToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             // TODO: Implement Toggle Sidebar functionality
         }
 
-        private void FullScreenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FullScreenToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             // TODO: Implement Full Screen functionality
         }
 
-        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             using (var aboutForm = new AboutForm())
             {
@@ -196,12 +204,12 @@ namespace TimelineBuilderPro
             }
         }
 
-        private void DocumentationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DocumentationToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             // TODO: Implement Documentation logic (open a help file or website)
         }
 
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object? sender, EventArgs e)
         {
             if (isUnsavedChanges)
             {
