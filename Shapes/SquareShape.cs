@@ -1,16 +1,19 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 public class SquareShape : BaseShape
 {
-    public SquareShape(Point location, bool snapToGrid) : base(location, snapToGrid)
+    public SquareShape(Point location, bool snapToGrid) : base(location, snapToGrid) { }
+
+    public override Control GetControl()
     {
+        // Custom drawing logic for SquareShape
         ShapePanel.Paint += (s, e) =>
         {
-            var g = e.Graphics;
-            g.FillRectangle(Brushes.LightGreen, 0, 0, ShapePanel.Width, ShapePanel.Width);
+            e.Graphics.DrawRectangle(Pens.Black, 0, 0, ShapePanel.Width, ShapePanel.Width);
         };
+        return ShapePanel;
     }
-
-    public override Control GetControl() => ShapePanel;
 }
+

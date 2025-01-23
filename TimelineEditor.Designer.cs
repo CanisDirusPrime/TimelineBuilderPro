@@ -1,10 +1,6 @@
-﻿// TimelineEditorMenu.cs
-
-using System.Windows.Forms;
-
-public class TimelineEditorMenu : Panel
+﻿public class TimelineEditorDesigner : Panel
 {
-    public TimelineEditorMenu(TimelineSettings settings)
+    public TimelineEditorDesigner(TimelineSettings settings)
     {
         Width = 200;
         BackColor = SystemColors.Control;
@@ -16,4 +12,3 @@ public class TimelineEditorMenu : Panel
         Controls.AddRange(new Control[] { titleLabel, yearsLabel, orientationLabel });
     }
 }
-

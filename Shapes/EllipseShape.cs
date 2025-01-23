@@ -1,16 +1,19 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 public class EllipseShape : BaseShape
 {
-    public EllipseShape(Point location, bool snapToGrid) : base(location, snapToGrid)
+    public EllipseShape(Point location, bool snapToGrid) : base(location, snapToGrid) { }
+
+    public override Control GetControl()
     {
+        // Custom drawing logic for EllipseShape
         ShapePanel.Paint += (s, e) =>
         {
-            var g = e.Graphics;
-            g.FillEllipse(Brushes.LightPink, 0, 0, ShapePanel.Width, ShapePanel.Height);
+            e.Graphics.DrawEllipse(Pens.Black, 0, 0, ShapePanel.Width, ShapePanel.Height / 2);
         };
+        return ShapePanel;
     }
-
-    public override Control GetControl() => ShapePanel;
 }
+

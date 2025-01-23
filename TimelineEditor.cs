@@ -2,120 +2,50 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-public class TimelineEditor : Form
+public class TimelineEditor : UserControl
 {
-	private Panel timelinePanel = new Panel(); // Inline initialization to resolve CS8618
-	private ComboBox shapeSelector = new ComboBox(); // Inline initialization
-	private CheckBox snapToGridCheckbox = new CheckBox(); // Inline initialization
-	private Button toggleOrientationButton = new Button(); // Inline initialization
-	private TrackBar zoomSlider = new TrackBar(); // Inline initialization
-	private bool isHorizontal = true;
+    private Button addArrowButton;
+    private Button addCircleButton;
+    private Button addEllipseButton;
+    private Button addRectangleButton;
+    private Button addSquareButton;
+    private Button toggleOrientationButton;
+    private TimelineCanvasForm canvas;
 
-	public TimelineEditor()
-	{
-		InitializeComponents();
-	}
+    public TimelineEditor(TimelineCanvasForm canvas)
+    {
+        this.canvas = canvas;
+        InitializeComponents();
+    }
 
-	private void InitializeComponents()
-	{
-		this.Text = "Timeline Editor";
-		this.Size = new Size(1200, 800);
+    private void InitializeComponents()
+    {
+        addArrowButton = new Button { Text = "Add Arrow", Top = 10, Left = 10, Width = 100 };
+        addArrowButton.Click += (s, e) => canvas.AddShape(new ArrowShape(new Point(50, 50), true));
 
-		timelinePanel.Dock = DockStyle.Fill;
-		timelinePanel.BackColor = Color.White;
-		timelinePanel.AutoScroll = true;
+        addCircleButton = new Button { Text = "Add Circle", Top = 40, Left = 10, Width = 100 };
+        addCircleButton.Click += (s, e) => canvas.AddShape(new CircleShape(new Point(50, 50), true));
 
-		shapeSelector = new ComboBox
-		{
-			Dock = DockStyle.Top,
-			DropDownStyle = ComboBoxStyle.DropDownList
-		};
-		shapeSelector.Items.AddRange(new string[] { "Circle", "Square", "Rectangle", "Ellipse", "Arrow" });
-		shapeSelector.SelectedIndex = 0;
+        addEllipseButton = new Button { Text = "Add Ellipse", Top = 70, Left = 10, Width = 100 };
+        addEllipseButton.Click += (s, e) => canvas.AddShape(new EllipseShape(new Point(50, 50), true));
 
-		snapToGridCheckbox = new CheckBox
-		{
-			Text = "Snap to Grid",
-			Dock = DockStyle.Top,
-			Checked = true
-		};
+        addRectangleButton = new Button { Text = "Add Rectangle", Top = 100, Left = 10, Width = 100 };
+        addRectangleButton.Click += (s, e) => canvas.AddShape(new RectangleShape(new Point(50, 50), true));
 
-		toggleOrientationButton = new Button
-		{
-			Text = "Toggle Orientation",
-			Dock = DockStyle.Top
-		};
-		toggleOrientationButton.Click += ToggleOrientation;
+        addSquareButton = new Button { Text = "Add Square", Top = 130, Left = 10, Width = 100 };
+        addSquareButton.Click += (s, e) => canvas.AddShape(new SquareShape(new Point(50, 50), true));
 
-		zoomSlider = new TrackBar
-		{
-			Dock = DockStyle.Top,
-			Minimum = 1,
-			Maximum = 5,
-			Value = 2
-		};
-		zoomSlider.Scroll += ZoomSlider_Scroll;
+        toggleOrientationButton = new Button { Text = "Toggle Orientation", Top = 160, Left = 10, Width = 100 };
+        toggleOrientationButton.Click += (s, e) => canvas.ToggleOrientation();
 
-		var controlsPanel = new Panel
-		{
-			Dock = DockStyle.Top,
-			Height = 100
-		};
-		controlsPanel.Controls.Add(shapeSelector);
-		controlsPanel.Controls.Add(snapToGridCheckbox);
-		controlsPanel.Controls.Add(toggleOrientationButton);
-		controlsPanel.Controls.Add(zoomSlider);
-
-		this.Controls.Add(timelinePanel);
-		this.Controls.Add(controlsPanel);
-
-		timelinePanel.MouseClick += TimelinePanel_MouseClick;
-	}
-
-	private void ToggleOrientation(object? sender, EventArgs e)
-	{
-		isHorizontal = !isHorizontal;
-		timelinePanel.SuspendLayout();
-		timelinePanel.Controls.Clear(); // Reorganize controls for the new orientation
-		timelinePanel.ResumeLayout();
-
-		MessageBox.Show($"Orientation set to {(isHorizontal ? "Horizontal" : "Vertical")}");
-	}
-
-	private void ZoomSlider_Scroll(object? sender, EventArgs e)
-	{
-		UpdateZoom();
-	}
-
-	private void UpdateZoom()
-	{
-		float zoomFactor = zoomSlider.Value * 0.5f;
-		timelinePanel.SuspendLayout();
-		timelinePanel.Scale(new SizeF(zoomFactor, zoomFactor));
-		timelinePanel.ResumeLayout();
-	}
-
-	private void TimelinePanel_MouseClick(object? sender, MouseEventArgs e)
-	{
-		if (e.Button == MouseButtons.Right && shapeSelector.SelectedItem != null)
-		{
-			var selectedShape = shapeSelector.SelectedItem.ToString();
-			AddShape(selectedShape!, e.Location);
-		}
-	}
-
-	private void AddShape(string shapeType, Point location)
-	{
-		BaseShape shape = shapeType switch
-		{
-			"Circle" => new CircleShape(location, snapToGridCheckbox.Checked),
-			"Square" => new SquareShape(location, snapToGridCheckbox.Checked),
-			"Rectangle" => new RectangleShape(location, snapToGridCheckbox.Checked),
-			"Ellipse" => new EllipseShape(location, snapToGridCheckbox.Checked),
-			"Arrow" => new ArrowShape(location, snapToGridCheckbox.Checked),
-			_ => throw new NotImplementedException()
-		};
-
-		timelinePanel.Controls.Add(shape.GetControl());
-	}
+        this.Controls.Add(addArrowButton);
+        this.Controls.Add(addCircleButton);
+        this.Controls.Add(addEllipseButton);
+        this.Controls.Add(addRectangleButton);
+        this.Controls.Add(addSquareButton);
+        this.Controls.Add(toggleOrientationButton);
+    }
 }
+
+
+

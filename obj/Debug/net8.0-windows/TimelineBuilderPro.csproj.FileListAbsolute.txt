@@ -37,6 +37,8 @@ D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\bin\Debug\net8.0-
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.csproj.AssemblyReference.cache
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.PreferencesForm.resources
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.MainGUI.resources
+D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineEditor.resources
+D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineEditorForm.resources
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.csproj.GenerateResource.cache
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.GeneratedMSBuildEditorConfig.editorconfig
 D:\Documents\Timelines\TimelineBuilder\Dev\TimelineBuilderRepo\obj\Debug\net8.0-windows\TimelineBuilderPro.AssemblyInfoInputs.cache

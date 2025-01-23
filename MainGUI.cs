@@ -10,10 +10,16 @@ namespace TimelineBuilderPro
         private bool isUnsavedChanges = false; // Tracks whether there are unsaved changes
         private const string DefaultFileExtension = ".timeline"; // Default file extension
         private System.Windows.Forms.Timer autoSaveTimer; // Declare the Timer
+        private TimelineCanvasForm timelineCanvas;
+        private TimelineEditorForm timelineEditorForm;
 
         public MainGUI()
         {
             InitializeComponent();
+
+            // Initialize the Timer
+            autoSaveTimer = new System.Windows.Forms.Timer();
+            autoSaveTimer.Tick += AutoSaveTimer_Tick;
 
             // Apply user preferences
             ApplyPreferences();
@@ -24,11 +30,7 @@ namespace TimelineBuilderPro
             // Set the form to launch maximized
             this.WindowState = FormWindowState.Maximized;
 
-            // Initialize the Timer
-            autoSaveTimer = new System.Windows.Forms.Timer();
-            autoSaveTimer.Tick += AutoSaveTimer_Tick;
-
-            // Attach event handlers for File menu items
+                        // Attach event handlers for File menu items
             this.newToolStripMenuItem.Click += NewToolStripMenuItem_Click;
             this.openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
             this.saveToolStripMenuItem.Click += SaveToolStripMenuItem_Click;
@@ -64,8 +66,13 @@ namespace TimelineBuilderPro
 
         private void InitializeTimelineEditor()
         {
-            // Initialize the timeline editor components
-            // TODO: Add initialization code here
+            var settings = new TimelineSettings { Title = "My Timeline", YearRange = "2000-2020", Orientation = "Horizontal" };
+
+            timelineCanvas = new TimelineCanvasForm { Dock = DockStyle.Fill };
+            timelineEditorForm = new TimelineEditorForm(timelineCanvas, settings);
+
+            this.Controls.Add(timelineCanvas);
+            this.Controls.Add(timelineEditorForm);
         }
 
         public void ApplyPreferences()
@@ -87,18 +94,6 @@ namespace TimelineBuilderPro
 
             // Apply language (this is a placeholder, actual implementation may vary)
             ApplyLanguage(Program.UserPreferences.Language);
-
-            /*
-            // Apply notifications
-            if (Program.UserPreferences.EnableNotifications)
-            {
-                // Enable notifications
-            }
-            else
-            {
-                // Disable notifications
-            }
-            */
 
             // Apply auto-save interval
             int intervalMinutes = Program.UserPreferences.AutoSaveInterval;
@@ -174,7 +169,7 @@ namespace TimelineBuilderPro
                     }
                 }
 
-                var newTimelineDialog = new NewTimelineDialog();
+                var newTimelineDialog = new NewTimelineForm();
                 if (newTimelineDialog.ShowDialog() == DialogResult.OK)
                 {
                     CreateNewTimeline(newTimelineDialog.TimelineSettings);
@@ -507,11 +502,41 @@ namespace TimelineBuilderPro
         {
             Controls.Clear();
 
-            var canvas = new TimelineCanvas(settings) { Dock = DockStyle.Fill };
-            Controls.Add(canvas);
+            // Determine the background color based on the theme and user preferences
+            Color backgroundColor;
+            if (Program.UserPreferences.CustomBackgroundColor.HasValue)
+            {
+                backgroundColor = Program.UserPreferences.CustomBackgroundColor.Value;
+            }
+            else if (Program.UserPreferences.Theme == "Dark")
+            {
+                backgroundColor = Color.DarkGray;
+            }
+            else
+            {
+                backgroundColor = Color.AntiqueWhite;
+            }
 
-            var editorMenu = new TimelineEditorMenu(settings) { Dock = DockStyle.Left };
-            Controls.Add(editorMenu);
+            // Initialize the new canvas with the determined background color
+            timelineCanvas = new TimelineCanvasForm
+            {
+                Dock = DockStyle.Fill,
+                BackColor = backgroundColor,
+                BorderStyle = BorderStyle.FixedSingle
+            };
+
+            // Initialize the editor form
+            timelineEditorForm = new TimelineEditorForm(timelineCanvas, settings)
+            {
+                Dock = DockStyle.Left,
+                Width = 200,
+                BackColor = SystemColors.Control
+            };
+
+            // Add the canvas and editor form to the main form
+            this.Controls.Add(timelineCanvas);
+            this.Controls.Add(timelineEditorForm);
         }
+
     }
 }

@@ -1,31 +1,20 @@
-﻿using System.Drawing;
-using System.Drawing.Drawing2D;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 public class ArrowShape : BaseShape
 {
-    public ArrowShape(Point location, bool snapToGrid) : base(location, snapToGrid)
+    public ArrowShape(Point location, bool snapToGrid) : base(location, snapToGrid) { }
+
+    public override Control GetControl()
     {
+        // Custom drawing logic for ArrowShape
         ShapePanel.Paint += (s, e) =>
         {
-            var g = e.Graphics;
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-
-            // Define the arrow points
-            Point[] arrowPoints = {
-                new Point(ShapePanel.Width / 2, 0),
-                new Point(ShapePanel.Width, ShapePanel.Height / 2),
-                new Point(ShapePanel.Width / 2 + 10, ShapePanel.Height / 2),
-                new Point(ShapePanel.Width / 2 + 10, ShapePanel.Height),
-                new Point(ShapePanel.Width / 2 - 10, ShapePanel.Height),
-                new Point(ShapePanel.Width / 2 - 10, ShapePanel.Height / 2),
-                new Point(0, ShapePanel.Height / 2)
-            };
-
-            g.FillPolygon(Brushes.DarkOrange, arrowPoints);
+            e.Graphics.DrawLine(Pens.Black, 0, 0, ShapePanel.Width, ShapePanel.Height);
+            e.Graphics.DrawLine(Pens.Black, ShapePanel.Width, 0, 0, ShapePanel.Height);
         };
+        return ShapePanel;
     }
-
-    public override Control GetControl() => ShapePanel;
 }
 

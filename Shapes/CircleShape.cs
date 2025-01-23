@@ -1,16 +1,19 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 public class CircleShape : BaseShape
 {
-    public CircleShape(Point location, bool snapToGrid) : base(location, snapToGrid)
+    public CircleShape(Point location, bool snapToGrid) : base(location, snapToGrid) { }
+
+    public override Control GetControl()
     {
+        // Custom drawing logic for CircleShape
         ShapePanel.Paint += (s, e) =>
         {
-            var g = e.Graphics;
-            g.FillEllipse(Brushes.LightBlue, 0, 0, ShapePanel.Width, ShapePanel.Height);
+            e.Graphics.DrawEllipse(Pens.Black, 0, 0, ShapePanel.Width, ShapePanel.Height);
         };
+        return ShapePanel;
     }
-
-    public override Control GetControl() => ShapePanel;
 }
+

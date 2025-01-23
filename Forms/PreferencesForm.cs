@@ -32,6 +32,11 @@ namespace TimelineBuilderPro
         private Button saveButton;
         private Button cancelButton;
 
+        // New link color buttons
+        private Button linkNewColorButton;
+        private Button linkUsedColorButton;
+        private Button linkVisitedColorButton;
+
         public PreferencesForm()
         {
             InitializeComponent();
@@ -56,8 +61,6 @@ namespace TimelineBuilderPro
             orientationToggle = new CheckBox();
             languageLabel = new Label();
             languageComboBox = new ComboBox();
-            //notificationsLabel = new Label();
-            //notificationsCheckBox = new CheckBox();
             autoSaveIntervalLabel = new Label();
             autoSaveIntervalComboBox = new ComboBox();
             defaultFilePathLabel = new Label();
@@ -93,8 +96,6 @@ namespace TimelineBuilderPro
             tableLayoutPanel.Controls.Add(orientationToggle, 1, 6);
             tableLayoutPanel.Controls.Add(languageLabel, 0, 7);
             tableLayoutPanel.Controls.Add(languageComboBox, 1, 7);
-            //tableLayoutPanel.Controls.Add(notificationsLabel, 0, 8);
-            //tableLayoutPanel.Controls.Add(notificationsCheckBox, 1, 8);
             tableLayoutPanel.Controls.Add(autoSaveIntervalLabel, 0, 9);
             tableLayoutPanel.Controls.Add(autoSaveIntervalComboBox, 1, 9);
             tableLayoutPanel.Controls.Add(defaultFilePathLabel, 0, 10);
@@ -102,6 +103,26 @@ namespace TimelineBuilderPro
             tableLayoutPanel.Controls.Add(browseButton, 2, 10);
             tableLayoutPanel.Controls.Add(buttonPanel, 0, 11);
             tableLayoutPanel.Controls.Add(themeToggle, 1, 1);
+
+            // Add new controls for link colors
+            var linkNewLabel = new Label { Text = "New Link Color:", Top = 300, Left = 10, Width = 150 };
+            linkNewColorButton = new Button { Text = "Select Color", Top = 300, Left = 170, Width = 100 };
+            linkNewColorButton.Click += (s, e) => SelectColor("NewLink");
+
+            var linkUsedLabel = new Label { Text = "Used Link Color:", Top = 330, Left = 10, Width = 150 };
+            linkUsedColorButton = new Button { Text = "Select Color", Top = 330, Left = 170, Width = 100 };
+            linkUsedColorButton.Click += (s, e) => SelectColor("UsedLink");
+
+            var linkVisitedLabel = new Label { Text = "Visited Link Color:", Top = 360, Left = 10, Width = 150 };
+            linkVisitedColorButton = new Button { Text = "Select Color", Top = 360, Left = 170, Width = 100 };
+            linkVisitedColorButton.Click += (s, e) => SelectColor("VisitedLink");
+
+            tableLayoutPanel.Controls.Add(linkNewLabel, 0, 12);
+            tableLayoutPanel.Controls.Add(linkNewColorButton, 1, 12);
+            tableLayoutPanel.Controls.Add(linkUsedLabel, 0, 13);
+            tableLayoutPanel.Controls.Add(linkUsedColorButton, 1, 13);
+            tableLayoutPanel.Controls.Add(linkVisitedLabel, 0, 14);
+            tableLayoutPanel.Controls.Add(linkVisitedColorButton, 1, 14);
             tableLayoutPanel.Dock = DockStyle.Fill;
             tableLayoutPanel.Location = new Point(0, 0);
             tableLayoutPanel.Name = "tableLayoutPanel";
@@ -261,27 +282,8 @@ namespace TimelineBuilderPro
             languageComboBox.Name = "languageComboBox";
             languageComboBox.Size = new Size(200, 23);
             languageComboBox.TabIndex = 14;
-            /*
-            // 
-            // notificationsLabel
-            // 
-            notificationsLabel.AutoSize = true;
-            notificationsLabel.Location = new Point(13, 248);
-            notificationsLabel.Name = "notificationsLabel";
-            notificationsLabel.Size = new Size(116, 15);
-            notificationsLabel.TabIndex = 15;
-            notificationsLabel.Text = "Enable Notifications:";
-            
-            // 
-            // notificationsCheckBox
-            // 
-            notificationsCheckBox.AutoSize = true;
-            notificationsCheckBox.Location = new Point(718, 251);
-            notificationsCheckBox.Name = "notificationsCheckBox";
-            notificationsCheckBox.Size = new Size(15, 14);
-            notificationsCheckBox.TabIndex = 16;
-            */
-            // autoSaveIntervalLabel
+            //
+            //autoSaveIntervalLabel
             // 
             autoSaveIntervalLabel.AutoSize = true;
             autoSaveIntervalLabel.Location = new Point(13, 268);
@@ -312,7 +314,7 @@ namespace TimelineBuilderPro
             // 
             defaultFilePathTextBox.Location = new Point(718, 300);
             defaultFilePathTextBox.Name = "defaultFilePathTextBox";
-            defaultFilePathTextBox.Size = new Size(350,35);
+            defaultFilePathTextBox.Size = new Size(350, 35);
             defaultFilePathTextBox.TabIndex = 20;
             // 
             // browseButton
@@ -378,9 +380,17 @@ namespace TimelineBuilderPro
             customDateFormatTextBox.Visible = dateFormatComboBox.SelectedItem?.ToString() == "Custom";
             orientationToggle.Checked = Program.UserPreferences.TimelineOrientation == "Vertical";
             languageComboBox.SelectedItem = Program.UserPreferences.Language;
-            //notificationsCheckBox.Checked = Program.UserPreferences.EnableNotifications;
             autoSaveIntervalComboBox.SelectedItem = Program.UserPreferences.AutoSaveInterval.ToString();
             defaultFilePathTextBox.Text = Program.UserPreferences.DefaultFilePath;
+            notificationsCheckBox.Checked = Program.UserPreferences.EnableNotifications;
+
+            // Load link colors
+            if (linkNewColorButton != null)
+                linkNewColorButton.BackColor = Program.UserPreferences.LinkNewColor;
+            if (linkUsedColorButton != null)
+                linkUsedColorButton.BackColor = Program.UserPreferences.LinkUsedColor;
+            if (linkVisitedColorButton != null)
+                linkVisitedColorButton.BackColor = Program.UserPreferences.LinkVisitedColor;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -395,6 +405,15 @@ namespace TimelineBuilderPro
                 Program.UserPreferences.EnableNotifications = notificationsCheckBox.Checked;
                 Program.UserPreferences.AutoSaveInterval = int.Parse(autoSaveIntervalComboBox.SelectedItem.ToString());
                 Program.UserPreferences.DefaultFilePath = defaultFilePathTextBox.Text;
+
+                // Save link colors
+                if (linkNewColorButton != null)
+                    Program.UserPreferences.LinkNewColor = linkNewColorButton.BackColor;
+                if (linkUsedColorButton != null)
+                    Program.UserPreferences.LinkUsedColor = linkUsedColorButton.BackColor;
+                if (linkVisitedColorButton != null)
+                    Program.UserPreferences.LinkVisitedColor = linkVisitedColorButton.BackColor;
+
                 Program.SavePreferences();
 
                 // Re-apply preferences to update the timer interval
@@ -408,6 +427,8 @@ namespace TimelineBuilderPro
                 ErrorHandler.HandleException(ex, "Saving preferences");
             }
         }
+
+
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
@@ -450,7 +471,33 @@ namespace TimelineBuilderPro
                 }
             }
         }
+
+        private void SelectColor(string linkType)
+        {
+            using (var colorDialog = new ColorDialog())
+            {
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                {
+                    switch (linkType)
+                    {
+                        case "NewLink":
+                            linkNewColorButton.BackColor = colorDialog.Color;
+                            break;
+                        case "UsedLink":
+                            linkUsedColorButton.BackColor = colorDialog.Color;
+                            break;
+                        case "VisitedLink":
+                            linkVisitedColorButton.BackColor = colorDialog.Color;
+                            break;
+                    }
+                }
+            }
+        }
     }
 }
+
+
+
+
 
 

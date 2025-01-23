@@ -7,24 +7,40 @@
       "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\forms\\preferencesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:forms\\preferencesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\maingui.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:maingui.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\utilities\\preferences.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:utilities\\preferences.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\utilities\\errorhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:utilities\\errorhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\forms\\preferencesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:forms\\preferencesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\timelineeditorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:timelineeditorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\timelinecanvasform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:timelinecanvasform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\timelineeditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:timelineeditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\timelineeditor.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:timelineeditor.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|d:\\documents\\timelines\\timelinebuilder\\dev\\timelinebuilderrepo\\maingui.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A34D6942-4362-4EB3-BCD7-379F1777ACC6}|TimelineBuilderPro.csproj|solutionrelative:maingui.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,54 +62,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PreferencesForm.cs",
-              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Forms\\PreferencesForm.cs",
-              "RelativeDocumentMoniker": "Forms\\PreferencesForm.cs",
-              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Forms\\PreferencesForm.cs",
-              "RelativeToolTip": "Forms\\PreferencesForm.cs",
-              "ViewState": "AgIAAHkBAAAAAAAAAAAkwJkBAAAJAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "TimelineEditor.cs",
+              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineEditor.cs",
+              "RelativeDocumentMoniker": "TimelineEditor.cs",
+              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineEditor.cs",
+              "RelativeToolTip": "TimelineEditor.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAuwDMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T18:15:26.443Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ErrorHandler.cs",
-              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Utilities\\ErrorHandler.cs",
-              "RelativeDocumentMoniker": "Utilities\\ErrorHandler.cs",
-              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Utilities\\ErrorHandler.cs",
-              "RelativeToolTip": "Utilities\\ErrorHandler.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAkwG4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T16:10:22.963Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Preferences.cs",
-              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Utilities\\Preferences.cs",
-              "RelativeDocumentMoniker": "Utilities\\Preferences.cs",
-              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Utilities\\Preferences.cs",
-              "RelativeToolTip": "Utilities\\Preferences.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBgAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T16:21:03.434Z",
+              "WhenOpened": "2025-01-21T00:05:38.229Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAgwEoAAAAAAAAAAAAAAA==",
+              "Title": "TimelineEditorForm.cs",
+              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineEditorForm.cs",
+              "RelativeDocumentMoniker": "TimelineEditorForm.cs",
+              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineEditorForm.cs",
+              "RelativeToolTip": "TimelineEditorForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T00:28:34.878Z",
+              "WhenOpened": "2025-01-21T00:05:22.341Z",
               "EditorCaption": ""
             },
             {
@@ -104,7 +94,7 @@
               "RelativeDocumentMoniker": "MainGUI.cs",
               "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\MainGUI.cs",
               "RelativeToolTip": "MainGUI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAawGMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-19T21:23:32.013Z",
               "EditorCaption": ""
@@ -112,6 +102,84 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAvwBQAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T00:28:34.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-21T01:54:53.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TimelineEditor.Designer.cs",
+              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineEditor.Designer.cs",
+              "RelativeDocumentMoniker": "TimelineEditor.Designer.cs",
+              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineEditor.Designer.cs",
+              "RelativeToolTip": "TimelineEditor.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-21T00:05:58.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PreferencesForm.cs",
+              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Forms\\PreferencesForm.cs",
+              "RelativeDocumentMoniker": "Forms\\PreferencesForm.cs",
+              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Forms\\PreferencesForm.cs",
+              "RelativeToolTip": "Forms\\PreferencesForm.cs",
+              "ViewState": "AgIAAN8BAAAAAAAAAADwv/ABAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-21T01:56:21.928Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Preferences.cs",
+              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Utilities\\Preferences.cs",
+              "RelativeDocumentMoniker": "Utilities\\Preferences.cs",
+              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\Utilities\\Preferences.cs",
+              "RelativeToolTip": "Utilities\\Preferences.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAwwCYAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-21T02:24:40.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TimelineCanvasForm.cs",
+              "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineCanvasForm.cs",
+              "RelativeDocumentMoniker": "TimelineCanvasForm.cs",
+              "ToolTip": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\TimelineCanvasForm.cs",
+              "RelativeToolTip": "TimelineCanvasForm.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwEAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T20:51:28.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "MainGUI.Designer.cs",
               "DocumentMoniker": "D:\\Documents\\Timelines\\TimelineBuilder\\Dev\\TimelineBuilderRepo\\MainGUI.Designer.cs",
               "RelativeDocumentMoniker": "MainGUI.Designer.cs",
